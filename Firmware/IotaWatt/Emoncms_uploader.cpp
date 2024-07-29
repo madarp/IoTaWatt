@@ -1,4 +1,4 @@
-#include "emoncms_uploader.h"
+#include "Emoncms_uploader.h"
 
 /*****************************************************************************************
  *          handle_query_s()
@@ -211,9 +211,9 @@ uint32_t emoncms_uploader::handle_write_s(){
     sha256->reset();
     SHA256* shaHMAC = new SHA256;
     shaHMAC->resetHMAC(_cryptoKey,16);
-    CBC<AES128>* cypher = new CBC<AES128>;
-    cypher->setIV(iv, 16);
-    cypher->setKey(_cryptoKey, 16);
+    GCM<AES128>* cipher = new GCM<AES128>;
+    cipher->setIV(iv, 12); // GCM typically uses a 12-byte IV
+    cipher->setKey(_cryptoKey, 16);
 
     // Process payload while
     // updating SHAs and encrypting. 
@@ -235,12 +235,12 @@ uint32_t emoncms_uploader::handle_write_s(){
             }
             len += padlen;
         }
-        cypher->encrypt(temp, temp, len);
+        cipher->encrypt(temp, temp, len);
         reqData.write(temp, len);
     }
     trace(T_Emoncms,70);
     delete[] temp;
-    delete cypher;
+    delete cipher;
     
     // finalize the Sha256 and shaHMAC
 
