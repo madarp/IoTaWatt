@@ -1,4 +1,13 @@
 =========================================
+Recent Updates
+=========================================
+
+This is my fork of the [IoTaWatt](https://github.com/boblemaire/IoTaWatt) project.  
+I am attempting to keep it up-to-date with recent changes to the Crypto libraries, and also make it more Linux-friendly.
+
+
+
+=========================================
 IoTaWatt WiFi Electricity Monitor Project
 =========================================
 
