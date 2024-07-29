@@ -18,7 +18,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.   
 ***********************************************************************************/
-#define IOTAWATT_VERSION "02_08_03"
+#define IOTAWATT_VERSION "02_08_03m"
 #define DEVICE_NAME "IotaWatt"
 
 #define PRINT(txt,val) Serial.print(txt); Serial.print(val);      // Quick debug aids
@@ -51,7 +51,6 @@
 
 #include <Crypto.h>
 #include <AES.h>
-//#include <CBC.h>
 #include <GCM.h>
 #include <SHA256.h>
 #include <Ed25519.h>
